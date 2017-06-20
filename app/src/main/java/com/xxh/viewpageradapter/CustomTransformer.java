@@ -31,12 +31,16 @@ public class CustomTransformer implements ViewPager.PageTransformer {
             {
                 Log.e("TAG", "position:" + position);
                 float factor = new FloatEvaluator().evaluate(position / (-1F), 1f, MIN_SCALE);
+                float alpha = new FloatEvaluator().evaluate(position / (-1F), 1f, MIN_ALPHA);
                 page.setScaleY(factor);
+                page.setAlpha(alpha);
             } else//[1，0]
             {
                 float faction = 1 - position / (1F);
                 float factor = new FloatEvaluator().evaluate(faction, MIN_SCALE, 1f);
+                float alpha = new FloatEvaluator().evaluate(faction, MIN_ALPHA, 1f);
                 page.setScaleY(factor);
+                page.setAlpha(alpha);
             }
 
         } else {

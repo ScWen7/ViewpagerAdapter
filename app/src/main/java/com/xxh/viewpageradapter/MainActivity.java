@@ -3,7 +3,6 @@ package com.xxh.viewpageradapter;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ImageView;
 
 import com.xxh.viewpageradapter.adapter.CommonAdapter;
 import com.xxh.viewpageradapter.adapter.CommonViewHolder;
@@ -13,7 +12,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     ViewPager view_pager;
-    private ArrayList<ImageView> imageViews;
+
+    CircleIndictor indictor;
+
     int[] imgs = {R.mipmap.image1, R.mipmap.image2, R.mipmap.image3, R.mipmap.image4, R.mipmap.image5, R.mipmap.image6, R.mipmap.image7, R.mipmap.image8, R.mipmap.image1
     };
     List<Integer> mList = new ArrayList<>();
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         view_pager = (ViewPager) findViewById(R.id.view_pager);
+        indictor = (CircleIndictor) findViewById(R.id.indictor);
         view_pager.setOffscreenPageLimit(3);
 
         initData();
@@ -41,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         view_pager.setCurrentItem(1);
+
+        indictor.setUpViewpager(view_pager);
 
 //        view_pager.setCurrentItem(imageViews.size() * 500 / 2);
     }
